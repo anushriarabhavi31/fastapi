@@ -1,13 +1,29 @@
 from fastapi import FastAPI
-app=FastAPI()
-@app.get("/")
-def home():
-    return {"message": "Hello, World!"}
 
-@app.get("/about")
-def about():
-    return {"message": "This page is About page!"}
+app = FastAPI()
 
 @app.get("/user")
-def user():
-    return {"message": "this page is user page"}
+def get_user(name):
+    return{
+        "name": name
+    }
+
+@app.get("/skill")
+def get_skill(name: str=None, skill: str=None):
+    return {
+        "name": name,
+        "skill": skill
+    }
+
+@app.get("/product")
+def get_product(limit: int=10):
+    return {"limit": limit}
+
+@app.get("/student")
+def get_student():
+    return {
+        "name": "anushri",
+        "course": "MCA",
+        "skill": "FastAPI"
+    }
+
